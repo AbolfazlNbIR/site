@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oraphia - نرخ لحظه‌ای ارز</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Vazirmatn', sans-serif; }
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease-in-out;
+        }
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 215, 0, 0.5);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
+        }
+        .price-text {
+            background: linear-gradient(90deg, #f7971e, #ffd200);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+        .icon-glow {
+            color: #f7971e;
+            filter: drop-shadow(0 0 8px rgba(247, 151, 30, 0.6));
+        }
+        .header-glow {
+            text-shadow: 0 0 20px rgba(247, 151, 30, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white header-glow tracking-tight">
+                <i class="fas fa-coins text-yellow-400 mr-3"></i>
+                Oraphia
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl mt-3 font-light">
+                نرخ‌های لحظه‌ای ارزهای جهانی <i class="fas fa-bolt text-yellow-400 ml-2"></i>
+            </p>
+            <div class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {% for item in prices %}
+            <div class="glass-card rounded-2xl p-6 text-white text-center transition-all duration-300">
+                <div class="flex justify-center items-center mb-4">
+                    <i class="fas {{ item.icon }} text-4xl icon-glow"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-200 mb-2">{{ item.name }}</h3>
+                <div class="text-2xl font-extrabold price-text">
+                    {{ item.price }}
+                </div>
+                <div class="text-xs text-gray-400 mt-3 flex items-center justify-center gap-1">
+                    <i class="fas fa-toman text-yellow-400"></i>
+                    <span>تومان</span>
+                </div>
+                <div class="mt-4 w-full h-0.5 bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent"></div>
+                <div class="text-xs text-gray-500 mt-3">
+                    <i class="far fa-clock ml-1"></i> لحظه‌ای
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <footer class="mt-16 text-center text-gray-500 text-sm border-t border-white/5 pt-8">
+            <i class="fas fa-crown text-yellow-400/50 ml-2"></i>
+            تمامی حقوق محفوظ است · Oraphia
+        </footer>
+    </div>
+</body>
+</html>
